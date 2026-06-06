@@ -1,0 +1,28 @@
+@model tarea2_clientes.Models.HabitacionModel
+
+@{
+    ViewData["Title"] = "Eliminar habitación";
+}
+
+<h1>Eliminar habitación</h1>
+<h3>¿Está seguro de que desea eliminar esta habitación?</h3>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Numero)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Numero)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tipo)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Tipo)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PrecioNoche)</dt>
+    <dd class="col-sm-9">@Model.PrecioNoche.ToString("C")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Capacidad)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Capacidad)</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="HabitacionId" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+    <a asp-action="Index">Cancelar</a>
+</form>

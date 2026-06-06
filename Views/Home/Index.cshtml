@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sistema de Gestión de Reservas Hotel</h1>
+    <p class="lead">Administra huéspedes, habitaciones, reservas, pagos y empleados.</p>
+    <div class="row mt-5">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Huéspedes</h5>
+                    <p class="card-text">Registra huéspedes con sus datos de contacto.</p>
+                    <a asp-controller="Huesped" asp-action="Index" class="btn btn-primary">Ver huéspedes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Habitaciones</h5>
+                    <p class="card-text">Gestiona habitaciones con tipo, precio y capacidad.</p>
+                    <a asp-controller="Habitacion" asp-action="Index" class="btn btn-primary">Ver habitaciones</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Reservas</h5>
+                    <p class="card-text">Crea reservas vinculando huéspedes, habitaciones y empleados.</p>
+                    <a asp-controller="Reserva" asp-action="Index" class="btn btn-primary">Ver reservas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Pagos</h5>
+                    <p class="card-text">Registra pagos asociados a cada reserva.</p>
+                    <a asp-controller="Pago" asp-action="Index" class="btn btn-primary">Ver pagos</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Empleados</h5>
+                    <p class="card-text">Administra el personal del hotel y sus turnos.</p>
+                    <a asp-controller="Empleado" asp-action="Index" class="btn btn-primary">Ver empleados</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

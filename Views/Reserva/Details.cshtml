@@ -1,0 +1,61 @@
+@model tarea2_clientes.Models.ReservaModel
+
+@{
+    ViewData["Title"] = "Detalle de la reserva";
+}
+
+<h1>Detalle de la reserva</h1>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">Huésped</dt>
+    <dd class="col-sm-9">@Model.Huesped?.Nombre @Model.Huesped?.Apellido</dd>
+
+    <dt class="col-sm-3">Habitación</dt>
+    <dd class="col-sm-9">@Model.Habitacion?.Numero (@Model.Habitacion?.Tipo)</dd>
+
+    <dt class="col-sm-3">Empleado</dt>
+    <dd class="col-sm-9">@Model.Empleado?.Nombre (@Model.Empleado?.Cargo)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FechaInicio)</dt>
+    <dd class="col-sm-9">@Model.FechaInicio.ToString("d")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FechaFin)</dt>
+    <dd class="col-sm-9">@Model.FechaFin.ToString("d")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Estado)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Estado)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Total)</dt>
+    <dd class="col-sm-9">@Model.Total.ToString("C")</dd>
+</dl>
+
+@if (Model.Pagos.Any())
+{
+    <h4>Pagos</h4>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Monto</th>
+                <th>Método</th>
+                <th>Fecha de pago</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pago in Model.Pagos)
+            {
+                <tr>
+                    <td>@pago.Monto.ToString("C")</td>
+                    <td>@pago.Metodo</td>
+                    <td>@pago.FechaPago.ToString("g")</td>
+                    <td>@pago.Estado</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ReservaId">Editar</a> |
+    <a asp-action="Index">Volver al listado</a>
+</div>

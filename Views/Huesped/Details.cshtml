@@ -1,0 +1,54 @@
+@model tarea2_clientes.Models.HuespedModel
+
+@{
+    ViewData["Title"] = "Detalle del huésped";
+}
+
+<h1>Detalle del huésped</h1>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Nombre)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Nombre)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Apellido)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Apellido)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Telefono)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Telefono)</dd>
+</dl>
+
+@if (Model.Reservas.Any())
+{
+    <h4>Reservas</h4>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Habitación</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Estado</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reserva in Model.Reservas)
+            {
+                <tr>
+                    <td>@reserva.Habitacion?.Numero</td>
+                    <td>@reserva.FechaInicio.ToString("d")</td>
+                    <td>@reserva.FechaFin.ToString("d")</td>
+                    <td>@reserva.Estado</td>
+                    <td>@reserva.Total.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.HuespedId">Editar</a> |
+    <a asp-action="Index">Volver al listado</a>
+</div>

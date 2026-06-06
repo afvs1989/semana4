@@ -1,0 +1,35 @@
+@model tarea2_clientes.Models.PagoModel
+
+@{
+    ViewData["Title"] = "Detalle del pago";
+}
+
+<h1>Detalle del pago</h1>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">Reserva</dt>
+    <dd class="col-sm-9">#@Model.ReservaId</dd>
+
+    <dt class="col-sm-3">Huésped</dt>
+    <dd class="col-sm-9">@Model.Reserva?.Huesped?.Nombre @Model.Reserva?.Huesped?.Apellido</dd>
+
+    <dt class="col-sm-3">Habitación</dt>
+    <dd class="col-sm-9">@Model.Reserva?.Habitacion?.Numero</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Monto)</dt>
+    <dd class="col-sm-9">@Model.Monto.ToString("C")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Metodo)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Metodo)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FechaPago)</dt>
+    <dd class="col-sm-9">@Model.FechaPago.ToString("g")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Estado)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Estado)</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PagoId">Editar</a> |
+    <a asp-action="Index">Volver al listado</a>
+</div>

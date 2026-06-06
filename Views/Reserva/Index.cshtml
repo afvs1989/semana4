@@ -1,0 +1,47 @@
+@model IEnumerable<tarea2_clientes.Models.ReservaModel>
+
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<h1>Reservas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Nueva reserva</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Huésped</th>
+                <th>Habitación</th>
+                <th>Empleado</th>
+                <th>@Html.DisplayNameFor(model => model.FechaInicio)</th>
+                <th>@Html.DisplayNameFor(model => model.FechaFin)</th>
+                <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                <th>@Html.DisplayNameFor(model => model.Total)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Huesped?.Nombre @item.Huesped?.Apellido</td>
+                    <td>@item.Habitacion?.Numero</td>
+                    <td>@item.Empleado?.Nombre</td>
+                    <td>@item.FechaInicio.ToString("d")</td>
+                    <td>@item.FechaFin.ToString("d")</td>
+                    <td>@Html.DisplayFor(model => item.Estado)</td>
+                    <td>@item.Total.ToString("C")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ReservaId">Detalles</a> |
+                        <a asp-action="Edit" asp-route-id="@item.ReservaId">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ReservaId">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

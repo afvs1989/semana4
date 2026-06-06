@@ -1,0 +1,31 @@
+@model tarea2_clientes.Models.PagoModel
+
+@{
+    ViewData["Title"] = "Eliminar pago";
+}
+
+<h1>Eliminar pago</h1>
+<h3>¿Está seguro de que desea eliminar este pago?</h3>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">Reserva</dt>
+    <dd class="col-sm-9">#@Model.ReservaId - @Model.Reserva?.Huesped?.Nombre @Model.Reserva?.Huesped?.Apellido</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Monto)</dt>
+    <dd class="col-sm-9">@Model.Monto.ToString("C")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Metodo)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Metodo)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FechaPago)</dt>
+    <dd class="col-sm-9">@Model.FechaPago.ToString("g")</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Estado)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Estado)</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="PagoId" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+    <a asp-action="Index">Cancelar</a>
+</form>

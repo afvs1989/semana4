@@ -1,0 +1,28 @@
+@model tarea2_clientes.Models.HuespedModel
+
+@{
+    ViewData["Title"] = "Eliminar huésped";
+}
+
+<h1>Eliminar huésped</h1>
+<h3>¿Está seguro de que desea eliminar este huésped?</h3>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Nombre)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Nombre)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Apellido)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Apellido)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Telefono)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Telefono)</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="HuespedId" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+    <a asp-action="Index">Cancelar</a>
+</form>

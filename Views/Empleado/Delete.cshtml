@@ -1,0 +1,28 @@
+@model tarea2_clientes.Models.EmpleadoModel
+
+@{
+    ViewData["Title"] = "Eliminar empleado";
+}
+
+<h1>Eliminar empleado</h1>
+<h3>¿Está seguro de que desea eliminar este empleado?</h3>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Nombre)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Nombre)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Cargo)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Cargo)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Turno)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Turno)</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="EmpleadoId" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+    <a asp-action="Index">Cancelar</a>
+</form>

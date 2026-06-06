@@ -1,0 +1,45 @@
+@model IEnumerable<tarea2_clientes.Models.PagoModel>
+
+@{
+    ViewData["Title"] = "Pagos";
+}
+
+<h1>Pagos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Nuevo pago</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Reserva</th>
+                <th>Huésped</th>
+                <th>@Html.DisplayNameFor(model => model.Monto)</th>
+                <th>@Html.DisplayNameFor(model => model.Metodo)</th>
+                <th>@Html.DisplayNameFor(model => model.FechaPago)</th>
+                <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>#@item.ReservaId</td>
+                    <td>@item.Reserva?.Huesped?.Nombre @item.Reserva?.Huesped?.Apellido</td>
+                    <td>@item.Monto.ToString("C")</td>
+                    <td>@Html.DisplayFor(model => item.Metodo)</td>
+                    <td>@item.FechaPago.ToString("g")</td>
+                    <td>@Html.DisplayFor(model => item.Estado)</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.PagoId">Detalles</a> |
+                        <a asp-action="Edit" asp-route-id="@item.PagoId">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PagoId">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

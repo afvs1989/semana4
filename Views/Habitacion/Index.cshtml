@@ -1,0 +1,41 @@
+@model IEnumerable<tarea2_clientes.Models.HabitacionModel>
+
+@{
+    ViewData["Title"] = "Habitaciones";
+}
+
+<h1>Habitaciones</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Nueva habitación</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Numero)</th>
+                <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                <th>@Html.DisplayNameFor(model => model.PrecioNoche)</th>
+                <th>@Html.DisplayNameFor(model => model.Capacidad)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => item.Numero)</td>
+                    <td>@Html.DisplayFor(model => item.Tipo)</td>
+                    <td>@item.PrecioNoche.ToString("C")</td>
+                    <td>@Html.DisplayFor(model => item.Capacidad)</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.HabitacionId">Detalles</a> |
+                        <a asp-action="Edit" asp-route-id="@item.HabitacionId">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.HabitacionId">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
